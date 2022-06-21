@@ -17,7 +17,7 @@ public class mainController {
 	@GetMapping("/test")
 	public String mainPage() {
 		
-		String resultString = "for test";
+		String resultString = "for testt";
 		
 		return resultString;
 	};
