@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class mainController {
 
+	public static final String DEBUG_MOD = PropertiesReader.getProperty("CUSTOM_MOD.debug");
 	private final Logger logger = LoggerFactory.getLogger(mainController.class.getName());
 	
 	
@@ -30,19 +31,19 @@ public class mainController {
 	@GetMapping("/initViewer")
 	public String resourceDirGetter() {
 		
-		logger.info("/initViewer initiated.");
-		
-		String debugMod = "Y"; // 프로퍼티로 뺄 것
-		
-		if (debugMod.equals("Y")) {
+		logger.info("/initViewer called.");
+				
+		if (DEBUG_MOD.equals("Y")) {
 			
-			logger.debug("from /initViewer - debugmod initiated.");
-			Map<String, String> userInfoTestTemp = new HashMap<>();
+			logger.debug("from /initViewer - DEBUG_MOD selected.");
+			Map<String, String> userInfoTesterVO = new HashMap<>();
 			
-			userInfoTestTemp.put("ID", "admin");
-			userInfoTestTemp.put("CDSID", "jhkim0001");
+			userInfoTesterVO.put("ID", "admin");
+			userInfoTesterVO.put("CDSID", "jhkim0001");
 			
 		} else {
+			
+			// 테스터 작동 확인 이후 작성
 			
 		}
 		
