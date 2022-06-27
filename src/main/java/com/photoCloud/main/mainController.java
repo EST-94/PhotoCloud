@@ -29,7 +29,7 @@ public class mainController {
 	
 	// 1. DB에서 사용자에 관한 파라미터를 받아 테이블에 접근 및 경로를 불러옴
 	@GetMapping("/initViewer")
-	public String resourceDirGetter() {
+	public String resourceDirGetter(Model model) {
 		
 		logger.info("/initViewer called.");
 				
@@ -38,17 +38,24 @@ public class mainController {
 			logger.debug("from /initViewer - DEBUG_MOD selected.");
 			Map<String, String> userInfoTesterVO = new HashMap<>();
 			
+			String directory = "";
+			
 			userInfoTesterVO.put("ID", "admin");
 			userInfoTesterVO.put("CDSID", "jhkim0001");
+			
+			model.addAttribute("IDSLOT", userInfoTesterVO.get("ID"));
+			model.addAttribute("PHOTOSLOT", directory);
+			
+			return "index";
 			
 		} else {
 			
 			// 테스터 작동 확인 이후 작성
-			
+		
+			return "/paramSender.do";
 		}
 		
 		
-		return "/paramSender.do";
 	};
 	
 	// 2. 자원경로를 받아 파라미터로 전달
