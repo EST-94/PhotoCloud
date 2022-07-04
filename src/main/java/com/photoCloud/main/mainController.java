@@ -11,14 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.demo.model.Container;
-
 @Controller
 public class mainController {
 
 	public static final String DEBUG_MOD = PropertiesReader.getProperty("CUSTOM_MOD.debug");
 	private final Logger logger = LoggerFactory.getLogger(mainController.class.getName());
-	private SessionVO stub = new SessionVO();
+	private SessionVO stub = new SessionVO(null, null);
 	
 	
 	@ResponseBody
