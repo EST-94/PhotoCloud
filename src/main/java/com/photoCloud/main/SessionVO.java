@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.photoCloud.main;
 
 public class SessionVO {
 
@@ -20,7 +20,7 @@ public class SessionVO {
 	}
 
 	public void setID(String ID) {
-		ID = ID;
+		this.ID = ID;
 	}
 
 	public String getdir() {
