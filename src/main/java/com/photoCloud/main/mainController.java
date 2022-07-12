@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class mainController {
 
-	public static final String DEBUG_MOD = PropertiesReader.getProperty("CUSTOM_MOD.debug");
+	private static PropertiesReader propertiesReader = new PropertiesReader("settings.properties");
+	private static final String CUSTOM_MOD = propertiesReader.getProperty("CUSTOM_MOD");
 	private final Logger logger = LoggerFactory.getLogger(mainController.class.getName());
 	private SessionVO stub = new SessionVO(null, null);
 	
@@ -34,13 +35,13 @@ public class mainController {
 	@GetMapping("/initViewer")
 	public String resourceDirGetter(Model model) {
 		
-		logger.info("/initViewer called.");
+		logger.info("/initViewer called. CUSTOM_MOD = " + CUSTOM_MOD.toString());
 				
-		if (DEBUG_MOD.equals("Y")) {
+		if (CUSTOM_MOD.toString().equals("DEBUG")) {
 			
 			boolean isDebug = true;
+			logger.debug("from /initViewer - debug mod selected.");
 			
-			logger.debug("from /initViewer - DEBUG_MOD selected.");
 			Map<String, String> testerVO = new HashMap<>();
 			
 			testerVO.put("ID", "admin");
